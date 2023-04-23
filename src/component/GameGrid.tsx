@@ -3,12 +3,11 @@ import useGames from "../hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkelton from "./GameCardSkelton";
 import GameCardContainer from "./GameCardContainer";
+import { Genre } from "../hooks/useGenres";
 
-const GameGrid = () => {
-  const { data, error, isloading } = useGames();
+const GameGrid = ({ selectedGenre }: { selectedGenre: Genre | null }) => {
+  const { data, error, isloading } = useGames(selectedGenre);
   const skeltons = [1, 2, 3, 4, 5, 6];
-
-  console.log(isloading);
   return (
     <>
       {error && <Text>{error}</Text>}
